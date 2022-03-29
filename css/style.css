@@ -1,0 +1,38 @@
+/* common */
+
+html{
+  height: 100%;
+}
+
+/* header */
+
+header{
+  background-color: pink;
+}
+
+/* main */
+
+main{
+  text-align: center;
+}
+#start{
+  width: 100px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+#monkey{
+  width: 100%;
+  overflow-wrap: break-word;
+}
+#monkey.success{
+  background-color: pink;
+}
+/* footer */
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: pink;
+}
