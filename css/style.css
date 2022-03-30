@@ -3,6 +3,9 @@
 html{
   height: 100%;
 }
+body{
+  height: 100%;
+}
 
 /* header */
 
@@ -14,24 +17,35 @@ header{
 
 main{
   text-align: center;
+  height: calc(100% - 50px);
 }
 #start{
   width: 100px;
   border: 1px solid black;
   cursor: pointer;
 }
+#start.disabled{
+  pointer-events: none;
+  opacity: .5;
+}
 #monkey{
   width: 100%;
+  overflow-y: scroll;
   overflow-wrap: break-word;
 }
 #monkey.success{
   background-color: pink;
+}
+span{
+  /* background-color: blue; */
+  color: blue;
 }
 /* footer */
 
 footer{
   position: absolute;
   bottom: 0;
+  height: 50px;
   width: 100%;
   text-align: center;
   background-color: pink;
