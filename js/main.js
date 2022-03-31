@@ -1,6 +1,6 @@
 "use strict"
 
-const start = document.getElementById("start");
+const btn = document.getElementById("btn");
 const monkey = document.getElementById("monkey");
 const text = document.getElementById("text");
 const forecast = document.getElementById("forecast");
@@ -14,6 +14,9 @@ const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p"
 let play = false;
 let time;
 let start_time;
+
+//タイプスピード(ミリ秒)
+const interval = 10;
 
 //ランダム打ち込み
 function render_random(){
@@ -40,7 +43,7 @@ function complete(){
     let result_time = finish_time - start_time;
     result.textContent = `${monkey.textContent.length}文字 : ${conversion(result_time)}で出来ました！`;
     monkey.classList.add("success");
-    start.textContent = "もう一度";
+    btn.textContent = "もう一度";
   };
 };
 
@@ -65,9 +68,9 @@ function conversion(time){
 //開始
 function start_monkey(){
   play = true;
-  time = setInterval(render_random,10);
+  time = setInterval(render_random,interval);
   start_time = Date.now();
-  start.textContent = "猿を止める";
+  btn.textContent = "猿を止める";
   text.disabled = true;
 };
 
@@ -80,28 +83,28 @@ function stopped(){
 //入力していないとスタート出来ないように
 text.addEventListener("input",()=>{
   if(text.value.length > 0){
-    start.classList.remove("disabled");
-    start.textContent = "猿にお願いする";
+    btn.classList.remove("disabled");
+    btn.textContent = "猿にお願いする";
     //入力文字数に応じて必要時間等を計算して出力
     let f_word = letters.length ** text.value.length;
-    let f_time = f_word * 10;
+    let f_time = f_word * interval;
     forecast.textContent = `推定必要文字時間 : ${f_word}文字 : ${conversion(f_time)}`;
   } else {
-    start.classList.add("disabled");
-    start.textContent = "入力してください";
+    btn.classList.add("disabled");
+    btn.textContent = "入力してください";
     result.textContent = "";
   };
 });
 
 //スタートボタン
-start.addEventListener("click",()=>{
+btn.addEventListener("click",()=>{
   if(monkey.classList.contains("success")){
     window.location.reload(false);
   } else if(!play){
     start_monkey();
   } else {
     stopped();
-    start.textContent = "猿に再開させる";
+    btn.textContent = "猿に再開させる";
   };
 });
 
