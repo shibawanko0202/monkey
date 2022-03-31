@@ -1,8 +1,8 @@
 /* common */
 
 :root{
-  --monkeybord: #af737d;
-  --othor: #8fafa6;
+  --maincolor: #af737d;
+  --subcolor: #7d9e9e;
 }
 
 html{
@@ -20,13 +20,13 @@ header{
   height: 80px;
   line-height: 80px;
   font-size: 50px;
-  color: var(--monkeybord);
+  color: var(--maincolor);
   text-align: center;
   font-family: 'Kaisei HarunoUmi', serif;
 }
 header h1 span{
   font-size: 36px;
-  color: var(--monkeybord);
+  color: var(--maincolor);
   margin: -3px;
 }
 #theorem{
@@ -51,21 +51,24 @@ main{
   margin: 10px 0 10px;
 }
 #text{
-  background-color: var(--othor);
+  background-color: var(--subcolor);
   color: #fff;
   outline: none;
   border-radius: 2px;
   width: 250px;
   height: 30px;
 }
+::placeholder{
+  color: #fff;
+}
 #btn{
   width: 200px;
   height: 30px;
   line-height: 30px;
   margin: 8px auto;
-  border: 1px solid var(--monkeybord);
+  border: 1px solid var(--maincolor);
   border-radius: 2px;
-  background-color: var(--monkeybord);
+  background-color: var(--maincolor);
   color: #fff;
   cursor: pointer;
   transition: all .6s;
@@ -73,7 +76,7 @@ main{
 #btn.disabled{
   pointer-events: none;
   background-color: #fff;
-  color: var(--monkeybord);
+  color: var(--maincolor);
 }
 #forecast{
   height: 20px;
@@ -81,25 +84,25 @@ main{
   color: #555;
 }
 #result{
-  min-width: 200px;
+  width: 300px;
   max-width: 400px;
   height: 30px;
   line-height: 30px;
   margin: 8px auto;
-  border: 2px solid var(--othor);
+  border: 2px solid var(--subcolor);
   border-radius: 2px;
-  color: var(--othor);
+  color: var(--subcolor);
 }
 #monkeybord{
   overflow-y: scroll;
-  height: calc(100% - 280px);
+  height: calc(100% - 300px);
 }
 #monkey{
   width: 100%;
   overflow-wrap: break-word;
 }
 #monkey.success{
-  background-color: var(--othor);
+  background-color: var(--subcolor);
 }
 span{
   color: rgba(209, 4, 4, 0.623);
@@ -108,7 +111,7 @@ span{
   width: 10px;
 }
 ::-webkit-scrollbar-thumb{
-  background: var(--monkeybord);
+  background: var(--maincolor);
 }
 .commentary{
   max-width: 480px;
@@ -127,5 +130,5 @@ footer{
   line-height: 40px;
   font-size: 20px;
   text-align: center;
-  color: var(--monkeybord);
+  color: var(--maincolor);
 }
