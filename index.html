@@ -4,20 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>無限の猿アプリ</title>
+  <title>無限の猿実験場</title>
+  <link rel="icon" href="img/outline_query_builder_black_24dp.png">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>無限の猿</h1>
+    <h1>無限の猿実験場</h1>
   </header>
   <main>
-    <label for="text">言葉を入力</label>
-    <input id="text" type="text" placeholder="猿への命令" />
-    <div id="start" class="disabled">入力してください</div>
-    <p id="elapsed_time"></p>
-    <p id="monkey"></p>
+    <section id="input">
+      <input id="text" type="text" placeholder="猿への命令を入力(半角英字)" spellcheck="false"/>
+      <div id="start" class="disabled">入力してください</div>
+      <p id="forecast"></p>
+      <p id="result"></p>
+    </section>
+    <section id="monkeybord">
+      <p id="monkey"></p>
+    </section>
+    <section class="commentary">
+      <dt>『無限の猿定理』とは</dt>
+      <dd>「無限の時間があれば、猿が無作為にキーボードを叩き続けるといずれシェイクスピアの戯曲が完成する」という思考実験</dd>
+    </section>
   </main>
   <footer>
     <small>&copy; 2022 shibata</small>

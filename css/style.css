@@ -1,52 +1,111 @@
 /* common */
 
+:root{
+  --monkeybord: #b8969b;
+}
+
 html{
   height: 100%;
 }
 body{
   height: 100%;
+  font-family:'Times New Roman', Times, serif;
 }
 
 /* header */
 
 header{
-  background-color: pink;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  color: var(--monkeybord);
+  text-align: center;
+  font-family: 'Kaisei HarunoUmi', serif;
 }
 
 /* main */
 
 main{
   text-align: center;
-  height: calc(100% - 50px);
+  height: calc(100% - 80px);
+  overflow: hidden;
+  background-color: #fff;
+}
+#input{
+  margin: 10px;
+}
+#text{
+  background-color: var(--monkeybord);
+  color: #fff;
+  width: 250px;
+  height: 30px;
 }
 #start{
-  width: 100px;
-  border: 1px solid black;
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  margin: 8px auto;
+  border: 2px solid var(--monkeybord);
+  border-radius: 2px;
+  background-color: var(--monkeybord);
+  color: #fff;
   cursor: pointer;
+  transition: all .6s;
 }
 #start.disabled{
   pointer-events: none;
-  opacity: .5;
+  background-color: #fff;
+  color: var(--monkeybord);
+}
+#forecast{
+  height: 20px;
+  color: #555;
+}
+#result{
+  min-width: 200px;
+  max-width: 400px;
+  height: 30px;
+  line-height: 30px;
+  margin: 8px auto;
+  border: 2px solid var(--monkeybord);
+  color: var(--monkeybord);
+}
+#monkeybord{
+  overflow-y: scroll;
+  height: 300px;
 }
 #monkey{
   width: 100%;
-  overflow-y: scroll;
   overflow-wrap: break-word;
 }
 #monkey.success{
-  background-color: pink;
+  background-color: var(--monkeybord);
 }
 span{
-  /* background-color: blue; */
   color: blue;
 }
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background: var(--monkeybord);
+}
+.commentary{
+  max-width: 480px;
+  margin: 20px auto;
+  color: #555;
+}
+.commentary dd{
+  margin: 10px;
+}
+
 /* footer */
 
 footer{
-  position: absolute;
-  bottom: 0;
-  height: 50px;
   width: 100%;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
-  background-color: pink;
+  color: var(--monkeybord);
 }
