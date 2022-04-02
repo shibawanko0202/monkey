@@ -62,11 +62,17 @@ main{
 ::placeholder{
   color: var(--subcolor);
 }
+#control{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+}
 #btn{
   width: 160px;
   height: 30px;
   line-height: 30px;
-  margin: 8px auto;
+  margin: 8px 4px;
   border: 1px solid var(--maincolor);
   border-radius: 2px;
   background-color: var(--maincolor);
@@ -75,14 +81,34 @@ main{
   transition: all .6s;
   user-select: none;
 }
+#btn.stopped{
+  width: 100px;
+}
 #btn.disabled{
   pointer-events: none;
   background-color: #fff;
   color: var(--maincolor);
 }
+#reset_btn{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  margin: 8px 4px;
+  border-radius: 2px;
+  background-color: var(--subcolor);
+  color: #fff;
+  cursor: pointer;
+  transition: all .6s;
+  user-select: none;
+  overflow: hidden;
+}
+#reset_btn.disabled{
+  width: 0;
+  opacity: 0;
+}
 .forecast{
   height: 20px;
-  margin: 8px auto 3px;
+  margin: 0 auto 3px;
   color: #555;
 }
 #forecast_word{

@@ -2,6 +2,7 @@
 
 const text = document.getElementById("text");
 const btn = document.getElementById("btn");
+const reset_btn = document.getElementById("reset_btn");
 const forecast_word = document.getElementById("forecast_word");
 const forecast_time = document.getElementById("forecast_time");
 const result = document.getElementById("result");
@@ -100,6 +101,8 @@ function start_monkey(){
   start_time = Date.now();
   btn.textContent = "猿を止める";
   text.disabled = true;
+  btn.classList.remove("stopped");
+  reset_btn.classList.add("disabled");
 };
 
 //停止
@@ -160,7 +163,7 @@ function check(str,arr){
   return translate;
 };
 
-//スタートボタン
+//メインボタン
 btn.addEventListener("click",()=>{
   if(monkeys[current_monkey].classList.contains("success")){
     window.location.reload(false);
@@ -168,8 +171,15 @@ btn.addEventListener("click",()=>{
     start_monkey();
   } else {
     stopped();
-    btn.textContent = "猿に再開させる";
+    btn.textContent = "再開する";
+    btn.classList.add("stopped");
+    reset_btn.classList.remove("disabled");
   };
+});
+
+//リセットボタン
+reset_btn.addEventListener("click",()=>{
+  window.location.reload(false);
 });
 
 //Enterでもスタート出来るように
