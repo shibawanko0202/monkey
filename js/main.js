@@ -1,13 +1,12 @@
 "use strict"
 
-const btn = document.getElementById("btn");
-const monkey = document.getElementById("monkey");
-const monkeys = document.getElementsByClassName("monkey");
 const text = document.getElementById("text");
+const btn = document.getElementById("btn");
 const forecast_word = document.getElementById("forecast_word");
 const forecast_time = document.getElementById("forecast_time");
 const result = document.getElementById("result");
 const monkeybord = document.getElementById("monkeybord");
+const monkeys = document.getElementsByClassName("monkey");
 
 // const letters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
@@ -16,6 +15,7 @@ const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p"
 let play = false;
 let monkey_interval;
 let start_time;
+let total_time = 0;
 
 //この文字数を越えたら新しい<p>へ移行(処理速度低減対策)
 const word_rimit = 20;
@@ -55,7 +55,7 @@ function render_random(){
   };
 
   //現在の文字数と経過時間を表示
-  result.textContent = `${monkeys[current_monkey].textContent.length + word_count}文字 : ${conversion(Date.now() - start_time)}`;
+  result.textContent = `${monkeys[current_monkey].textContent.length + word_count}文字 : ${conversion(Date.now() - start_time + total_time)}`;
 
   //常に下までスクロール
   monkeybord.scrollTop = monkeybord.scrollHeight;
@@ -66,8 +66,7 @@ function render_random(){
 function complete(){
   if(monkeys[current_monkey].textContent.indexOf(text.value,(monkeys[current_monkey].textContent.length - text.value.length)) > -1){
     stopped();
-    let finish_time = Date.now();
-    let result_time = finish_time - start_time;
+    let result_time = Date.now() - start_time + total_time;
     result.textContent = `${monkeys[current_monkey].textContent.length + word_count}文字 : ${conversion(result_time)}で出来ました！`;
     btn.textContent = "もう一度";
     for(let i = 0;i < monkeys.length;i++){
@@ -78,11 +77,11 @@ function complete(){
 
 //ミリ秒を日時分秒に変換
 function conversion(time){
-  let r_time = time / 1000;
-  let day = Math.floor(r_time / 86400);
-  let hour = Math.floor(r_time % 86400 / 3600);
-  let min = Math.floor(r_time % 3600 / 60);
-  let sec = Math.floor(r_time % 60);
+  let t = time / 1000;
+  let day = Math.floor(t / 86400);
+  let hour = Math.floor(t % 86400 / 3600);
+  let min = Math.floor(t % 3600 / 60);
+  let sec = Math.floor(t % 60);
   if(day > 0){
     return `${day}日${hour}時間${min}分${sec}秒`;
   } else if(hour > 0){
@@ -106,6 +105,7 @@ function start_monkey(){
 //停止
 function stopped(){
   play = false;
+  total_time += Date.now() - start_time;
   clearInterval(monkey_interval);
 };
 

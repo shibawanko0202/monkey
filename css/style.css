@@ -25,7 +25,7 @@ header{
   font-family: 'Kaisei HarunoUmi', serif;
   user-select: none;
 }
-header h1 span{
+#no{
   font-size: 36px;
   color: var(--maincolor);
   margin: -3px;
@@ -73,6 +73,7 @@ main{
   color: #fff;
   cursor: pointer;
   transition: all .6s;
+  user-select: none;
 }
 #btn.disabled{
   pointer-events: none;
@@ -125,7 +126,7 @@ main{
 .monkey.success{
   background-color: var(--subcolor);
 }
-span{
+.monkey span{
   color: rgba(209, 4, 4, 0.623);
 }
 ::-webkit-scrollbar{
