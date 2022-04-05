@@ -7,7 +7,7 @@ const forecast_word = document.getElementById("forecast_word");
 const forecast_time = document.getElementById("forecast_time");
 const result = document.getElementById("result");
 const monkeybord = document.getElementById("monkeybord");
-const monkeys = document.getElementsByClassName("monkey");
+const monkey = document.getElementById("monkey");
 
 // const letters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
@@ -18,15 +18,13 @@ let monkey_interval;
 let start_time;
 let total_time = 0;
 
-//この文字数を越えたら新しい<p>へ移行(処理速度低減対策)
-const word_rimit = 20;
-//テキストの冊数
-let current_monkey = 0;
+//タイプスピード(ミリ秒)
+const interval_speed = 10;
+//この文字数を越えたら<p>を初期化(処理速度低減対策)
+const word_rimit = 500;
 //総文字数
 let word_count = 0;
 
-//タイプスピード(ミリ秒)
-const interval_speed = 10;
 
 //ランダム打ち込み
 function render_random(){
@@ -36,27 +34,20 @@ function render_random(){
 
   //textに含まれる(惜しい)文字なら<span>で囲んで色付け
   if(arr.indexOf(letters[ran]) > -1){
-    monkeys[current_monkey].innerHTML += `<span>${letters[ran]}</span>`;
+    monkey.innerHTML += `<span>${letters[ran]}</span>`;
 
   } else {//かすりもしない文字の場合
-    monkeys[current_monkey].innerHTML += letters[ran];
-
-    //一定以上の文字数なら新しいボックスへ
-    if(monkeys[current_monkey].textContent.length > word_rimit){
-
-      //現在の文字数を総文字数へ追加
-      word_count += monkeys[current_monkey].textContent.length;
-
-      //新しい<p>を作り移行
-      current_monkey++;
-      const new_monkey = document.createElement("p");
-      new_monkey.className = "monkey";
-      monkeybord.appendChild(new_monkey);
+    monkey.innerHTML += letters[ran];
+    
+    //一定以上の文字数なら<p>を初期化
+    if(monkey.textContent.length > word_rimit){
+      word_count += monkey.textContent.length;
+      monkey.innerHTML = "";
     };
   };
 
   //現在の文字数と経過時間を表示
-  result.textContent = `${monkeys[current_monkey].textContent.length + word_count}文字 : ${conversion(Date.now() - start_time + total_time)}`;
+  result.textContent = `${monkey.textContent.length + word_count}文字 : ${conversion(Date.now() - start_time + total_time)}`;
 
   //常に下までスクロール
   monkeybord.scrollTop = monkeybord.scrollHeight;
@@ -65,14 +56,12 @@ function render_random(){
 
 //文字の完成の見極め
 function complete(){
-  if(monkeys[current_monkey].textContent.indexOf(text.value,(monkeys[current_monkey].textContent.length - text.value.length)) > -1){
+  if(monkey.textContent.indexOf(text.value,(monkey.textContent.length - text.value.length)) > -1){
     stopped();
     let result_time = Date.now() - start_time + total_time;
-    result.textContent = `${monkeys[current_monkey].textContent.length + word_count}文字 : ${conversion(result_time)}で出来ました！`;
+    result.textContent = `${monkey.textContent.length + word_count}文字 : ${conversion(result_time)}で出来ました！`;
     btn.textContent = "もう一度";
-    for(let i = 0;i < monkeys.length;i++){
-      monkeys[i].classList.add("success");
-    };
+    monkey.classList.add("success");
   };
 };
 
@@ -108,7 +97,6 @@ function start_monkey(){
 //停止
 function stopped(){
   play = false;
-  total_time += Date.now() - start_time;
   clearInterval(monkey_interval);
 };
 
@@ -121,7 +109,8 @@ text.addEventListener("input",()=>{
 
     //入力文字数に応じて必要時間等を計算して出力
     let f_word = letters.length ** text.value.length;
-    let f_time = f_word * interval_speed;
+    //実際には30分程度で速度が大きく低下する為、要検討
+    let f_time = (interval_speed * f_word) * (1.2 ** (text.value.length-1));
     forecast_word.textContent = ` ${f_word}文字`;
     forecast_time.textContent = ` ${conversion(f_time)}`;
   } else {
@@ -133,7 +122,7 @@ text.addEventListener("input",()=>{
   };
 });
 
-//入力文字を判定と文字数によるコメント表示
+//入力文字の判定と文字数によるコメント表示
 function check(str,arr){
   let translate = "";
   for(let i = 0;i < str.length;i++){
@@ -165,7 +154,7 @@ function check(str,arr){
 
 //メインボタン
 btn.addEventListener("click",()=>{
-  if(monkeys[current_monkey].classList.contains("success")){
+  if(monkey.classList.contains("success")){
     window.location.reload(false);
   } else if(!play){
     start_monkey();
@@ -174,6 +163,7 @@ btn.addEventListener("click",()=>{
     btn.textContent = "再開する";
     btn.classList.add("stopped");
     reset_btn.classList.remove("disabled");
+    total_time += Date.now() - start_time;
   };
 });
 

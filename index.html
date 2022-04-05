@@ -23,12 +23,15 @@
 </head>
 <body>
   <header>
-    <h1>無限<span>の</span>猿<span id="theorem">定理</span>実験場</h1>
+    <h1>無限<span id="no">の</span>猿<span id="theorem">定理</span>実験場</h1>
   </header>
   <main>
     <section id="input">
       <input id="text" type="text" placeholder="猿への命令を入力(半角英字)" spellcheck="false" autocomplete="off"></input>
-      <div id="btn" class="disabled">入力してください</div>
+      <section id="control">
+        <div id="btn" class="disabled">入力してください</div>
+        <div id="reset_btn" class="disabled">やり直す</div>
+      </section>
       <table class="forecast">
         <tr><th>推定必要文字 :</th><td id="forecast_word"></td></tr>
         <tr><th>推定必要時間 :</th><td id="forecast_time"></td></tr>
@@ -36,7 +39,7 @@
       <p id="caution">※猿の疲労により実際の速度は徐々に落ちます(対策検討中)</p>
       <p id="result"></p>
     </section>
-    <section id="monkeybord"><p class="monkey"></p></section>
+    <section id="monkeybord"><p id="monkey"></p></section>
     <section class="commentary">
       <dt>『無限の猿定理』とは</dt>
       <dd>「無限の時間があれば、猿が無作為にキーボードを叩き続けるといずれシェイクスピアの戯曲が完成する」という定理。<br>

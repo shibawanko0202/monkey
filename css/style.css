@@ -11,6 +11,7 @@ html{
 body{
   height: 100%;
   font-family:'Times New Roman', Times, serif;
+  background-color: #eee;
 }
 
 /* header */
@@ -46,7 +47,6 @@ main{
   text-align: center;
   height: calc(100% - 120px);
   overflow: hidden;
-  background-color: #fff;
 }
 #input{
   margin: 10px 0 10px;
@@ -58,6 +58,7 @@ main{
   border-radius: 2px;
   width: 250px;
   height: 30px;
+  background-color: #eee;
 }
 ::placeholder{
   color: var(--subcolor);
@@ -86,7 +87,8 @@ main{
 }
 #btn.disabled{
   pointer-events: none;
-  background-color: #fff;
+  border: none;
+  background-color: #eee;
   color: var(--maincolor);
 }
 #reset_btn{
@@ -143,16 +145,16 @@ main{
   height: calc(100% - 330px);
   text-align: left;
 }
-.monkey{
+#monkey{
   display: inline;
   width: 100%;
   overflow-wrap: break-word;
   word-break: break-all;
 }
-.monkey.success{
+#monkey.success{
   background-color: var(--subcolor);
 }
-.monkey span{
+#monkey span{
   color: rgba(209, 4, 4, 0.623);
 }
 ::-webkit-scrollbar{
