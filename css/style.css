@@ -3,6 +3,7 @@
 :root{
   --maincolor: #af737d;
   --subcolor: #7d9e9e;
+  --almostcolor: rgba(209, 4, 4, 0.623);
 }
 
 html{
@@ -110,7 +111,7 @@ main{
 }
 .forecast{
   height: 20px;
-  margin: 0 auto 3px;
+  margin: 0 auto 8px;
   color: #555;
 }
 #forecast_word{
@@ -119,26 +120,33 @@ main{
 #forecast_time{
   padding-left: 4px;
 }
-#caution{
-  color: #555;
-  font-size: 10px;
-}
-#result{
-  width: 300px;
-  max-width: 400px;
+#result,
+#almost{
+  width: 360px;
   height: 30px;
   line-height: 30px;
-  margin: 4px auto 8px;
+  margin: auto;
   background-color: var(--subcolor);
   border: none;
-  border-radius: 4px;
-  color: #fff;
+  border-radius: 8px 8px 0 0;
+  color: #eee;
   transition: all .3s;
 }
 #result.error{
-  background-color: #fff;
+  background-color: #eee;
   border: 1px solid var(--subcolor);
   color: var(--subcolor);
+}
+#almost{
+  display: flex;
+  justify-content: center;
+  border-radius: 0 0 8px 8px;
+  background-color: #eee;
+  border: 1px solid var(--subcolor);
+  color: var(--subcolor);
+}
+#almost li + li{
+  margin-left: 12px;
 }
 #monkeybord{
   overflow-y: scroll;
@@ -155,7 +163,7 @@ main{
   background-color: var(--subcolor);
 }
 #monkey span{
-  color: rgba(209, 4, 4, 0.623);
+  color: var(--almostcolor);
 }
 ::-webkit-scrollbar{
   width: 10px;
