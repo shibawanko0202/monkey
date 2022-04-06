@@ -7,7 +7,6 @@ const forecast_word = document.getElementById("forecast_word");
 const forecast_time = document.getElementById("forecast_time");
 const result = document.getElementById("result");
 const almost = document.getElementById("almost");
-const monkeybord = document.getElementById("monkeybord");
 const monkey = document.getElementById("monkey");
 
 // const letters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -19,10 +18,10 @@ let monkey_interval;
 let start_time;
 let total_time = 0;
 
-//タイプスピード(ミリ秒)
+//打鍵速度(ミリ秒)
 const interval_speed = 5;
 //この文字数を越えたら<p>を初期化(処理速度低減対策)
-const word_rimit = 400;
+const word_rimit = 300;
 //総文字数
 let word_count = 0;
 //惜しい文字のリスト
@@ -35,7 +34,6 @@ function render_random(){
   let arr = [...moji];
   let ran = Math.floor(Math.random() * 26);
 
-  
   //textに含まれる(惜しい)文字なら<span>で囲んで色付け
   if(arr.indexOf(letters[ran]) > -1){
     monkey.innerHTML += `<span>${letters[ran]}</span>`;
@@ -75,7 +73,7 @@ function almost_picup(monkey,text){
   const als = document.getElementsByClassName("al");
   for(let i = 1;i < als.length;i++){
     als[i].textContent = `${text.slice(0,i)} : ${almosts[i]}`; 
-  }
+  };
 };
 
 //文字の完成の見極め
