@@ -11,6 +11,7 @@ html{
 }
 body{
   height: 100%;
+  /* overflow: hidden; */
   font-family:'Times New Roman', Times, serif;
   background-color: #eee;
 }
@@ -46,7 +47,8 @@ header{
 
 main{
   text-align: center;
-  height: calc(100% - 120px);
+  min-height: calc(100% - 130px);
+  height: auto;
   overflow: hidden;
 }
 #input{
@@ -68,7 +70,6 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* text-align: center; */
 }
 #btn{
   width: 160px;
