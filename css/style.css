@@ -47,8 +47,7 @@ header{
 
 main{
   text-align: center;
-  min-height: calc(100% - 130px);
-  height: auto;
+  height: calc(100% - 130px);
   overflow: hidden;
 }
 #input{
